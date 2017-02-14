@@ -1,0 +1,7 @@
+# bootstrap.yml
+spring:
+  application:
+    name: example-service
+  profiles:
+    active: native
+      

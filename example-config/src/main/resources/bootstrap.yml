@@ -1,0 +1,10 @@
+# bootstrap.yml
+spring:
+  application:
+    name: example-config
+  profiles:
+    active: native
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://${eureka.host:localhost}:${eureka.port:8761}/eureka/

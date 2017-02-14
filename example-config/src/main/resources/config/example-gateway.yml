@@ -1,0 +1,3 @@
+services:
+  endpoint:
+    example: http://example-service/example
