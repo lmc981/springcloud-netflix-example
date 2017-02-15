@@ -20,12 +20,14 @@ public class Application {
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
 	}
-	
+
 	@Value("${reply.message}")
     private String replyMessage;
-	
+
+	private static double rnd = Math.random()*1000;
+
 	@RequestMapping(value = "/example", method = RequestMethod.GET)
 	public String example(){
-		return replyMessage;
+		return replyMessage + rnd;
 	}
 }
