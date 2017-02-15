@@ -1,0 +1,49 @@
+examplediscovery:
+  image: "example-discovery:0.0.1-SNAPSHOT"
+  hostname: examplediscovery
+  ports:
+   - "8761:8761"
+
+exampleconfig:
+  image: "example-config:0.0.1-SNAPSHOT"
+  hostname: exampleconfig
+  links:
+    - examplediscovery
+  environment:
+     EUREKA_HOST: examplediscovery
+     EUREKA_PORT: 8761
+     CONFIG_HOST: exampleconfig
+     CONFIG_PORT: 8888
+  ports:
+    - "8888:8888"
+
+exampleservice:
+  image: example-service:0.0.1-SNAPSHOT
+  hostname: exampleservice
+  links:
+    - examplediscovery
+    - exampleconfig
+  environment:
+     EUREKA_HOST: examplediscovery
+     EUREKA_PORT: 8761
+     CONFIG_HOST: exampleconfig
+     CONFIG_PORT: 8888
+     SERVER_PORT: 8080
+  ports:
+    - "8080:8080"
+
+examplegateway:
+  image: example-gateway:0.0.1-SNAPSHOT
+  hostname: examplegateway
+  links:
+    - examplediscovery
+    - exampleconfig
+    - exampleservice
+  environment:
+     EUREKA_HOST: examplediscovery
+     EUREKA_PORT: 8761
+     CONFIG_HOST: exampleconfig
+     CONFIG_PORT: 8888
+     SERVER_PORT: 8080
+  ports:
+    - "8081:8080"

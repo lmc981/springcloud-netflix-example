@@ -4,4 +4,10 @@ spring:
     name: example-service
   profiles:
     active: native
-      
+  cloud:
+    config:
+      uri: http://${CONFIG_HOST:localhost}:${CONFIG_PORT:8888}
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://${EUREKA_HOST:localhost}:${EUREKA_PORT:8761}/eureka/
