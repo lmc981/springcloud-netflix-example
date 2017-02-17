@@ -8,6 +8,10 @@ spring:
     config:
       uri: http://${CONFIG_HOST:localhost}:${CONFIG_PORT:8888}
 eureka:
+  instance:
+    leaseRenewalIntervalInSeconds: 10
+  registerWithEureka: true
+  fetchRegistry: true
   client:
     serviceUrl:
       defaultZone: http://${EUREKA_HOST:localhost}:${EUREKA_PORT:8761}/eureka/

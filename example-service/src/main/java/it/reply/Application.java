@@ -22,12 +22,15 @@ public class Application {
 	}
 
 	@Value("${reply.message}")
-    private String replyMessage;
+	private String replyMessage;
 
-	private static double rnd = Math.random()*1000;
+	// @Value("${spring.application.instance_id}")
+	// private String appId;
+
+	private static int rnd = new Double(Math.random()*1000).intValue();
 
 	@RequestMapping(value = "/example", method = RequestMethod.GET)
 	public String example(){
-		return replyMessage + rnd;
+		return replyMessage + " " + rnd;
 	}
 }

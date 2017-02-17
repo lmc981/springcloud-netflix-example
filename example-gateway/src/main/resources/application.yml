@@ -7,3 +7,7 @@ logging:
 services:
   endpoint:
     example: placeholder
+rc:
+  ribbon:
+    eureka:
+      enabled: true
